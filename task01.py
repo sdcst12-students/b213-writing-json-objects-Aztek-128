@@ -83,7 +83,9 @@ class main():
         if choice == 3:
             self.Delete()
         if choice == 4:
-            self.View
+            self.View()
+        if choice == 5:
+            self.AbeKopis()
 
     def Create(self):
         Assignment = str(input("What is your Assignment Name:    ")).capitalize()
@@ -104,8 +106,9 @@ class main():
 
 
     def Edit(self):
-        with open('data.csv','r+') as file:
+        with open('data.csv','r') as file:
             data = file.read()
+        with open('data.csv','w') as file:
             sent = json.loads(data)
             list_of_assignments = [i for i in sent if i != 0]
             print(f"which assignment do you want to change: {list_of_assignments}")
@@ -120,8 +123,8 @@ class main():
             
         
     def AbeKopis(self):
-
-        pass
+        print("then why the hell are you here")
+        
     def Delete(self):
         os.remove('data.csv')
         with open('data.csv','w') as file:
@@ -129,5 +132,9 @@ class main():
 
         pass
     def View(self):
-        pass
+        with open('data.csv','r') as file:
+            data = file.read()
+            sent = json.loads(data)
+            print(sent)
+    
 main()
